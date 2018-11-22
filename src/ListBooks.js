@@ -1,26 +1,13 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Shelf from './Shelf'
-import * as BooksAPI from './BooksAPI'
 
 class ListBooks extends Component {
-    state = {
-        books: [],
-        currentlyReading: [],
-        wantToRead: [],
-        read: []
-    }
-    
-        async componentDidMount() {
-            const books = await BooksAPI.getAll()
-            const currentlyReading = books.filter(book => book.shelf === "currentlyReading")
-            const wantToRead = books.filter(book => book.shelf === "wantToRead")
-            const read = books.filter(book => book.shelf === "read")
-            this.setState( { books, currentlyReading, wantToRead, read } )
-                  console.log('wantToRead', this.state.wantToRead)
-        }
 
     render() {
+
+        const { books, updateShelf } = this.props
+
         return (
             <div className="list-books">
                 <div className="list-books-title">
@@ -28,9 +15,24 @@ class ListBooks extends Component {
                 </div>
                 <div className="list-books-content">
                     <div>
-                        <Shelf title="Currently Reading" books={this.props.currentlyReading} />
-                        <Shelf title="Want to Read" books={this.props.wantToRead} />
-                        <Shelf title="Read" books={this.props.read} />
+                        <Shelf 
+                            section="Currently Reading"
+                            books={books.filter((book) => book.shelf === 'currentlyReading'
+                                )}
+                            updateShelf={updateShelf}
+                        />
+                        <Shelf
+                            section="Want to Read"
+                            books={books.filter((book) => book.shelf === 'wantToRead'
+                                )}
+                            updateShelf={updateShelf} 
+                        />
+                        <Shelf
+                            section="Read"
+                            books={books.filter((book) => book.shelf === 'currentlyReading'
+                                )}
+                            updateShelf={updateShelf} 
+                        />
                     </div>
                 </div>
                 <div className="open-search">
