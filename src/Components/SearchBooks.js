@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import * as BooksAPI from './BooksAPI'
+import * as BooksAPI from '../BooksAPI'
 import Book from './Book'
 import PropTypes from 'prop-types'
 
@@ -16,16 +16,19 @@ class SearchBooks extends Component {
      query: ''
    }
 
+    // value typed into search bar will be set as the state for query
     handleChange = async e => {
       const query = e.target.value.trim()
       this.setState( { query } )
       
+      // if search is empty, then empty array so no books are displayed
       if (query === '' || query === undefined) {
             return this.setState({
                books: []
              })
            }
       else {
+            // if a query exists, search that query and set the state of books to be equal to the books that pass the search
             const results = await BooksAPI.search(query)
             this.setState( { books: results } )
            }

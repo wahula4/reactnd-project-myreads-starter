@@ -13,6 +13,7 @@ class ListBooks extends Component {
     render() {
 
         const { books, updateShelf } = this.props
+        // each shelf will render the books that have shelf values corresponding to their section
 
         return (
             <div className="list-books">

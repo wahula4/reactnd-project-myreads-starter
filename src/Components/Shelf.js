@@ -19,6 +19,7 @@ class Shelf extends Component {
             <div className="bookshelf-books">
                 <ol className="books-grid">
                 {
+                    // if there are any books, map over them and add book details
                     books && books.map((book) => {
                          return (
                               <Book
