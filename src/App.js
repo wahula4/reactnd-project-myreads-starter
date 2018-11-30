@@ -10,25 +10,24 @@ class BooksApp extends Component {
   state = {
     books: []
 }
-
+    // get the inital state of all the books and pass down to other components
     async componentDidMount() {
         const books = await BooksAPI.getAll()
         this.setState( { books } )
-              console.log('currently reading: ', books.filter(book => book.shelf === "currentlyReading"))
-              console.log('want to read: ', books.filter(book => book.shelf === "wantToRead"))
-              console.log('read: ', books.filter(book => book.shelf === "read"))
     }
 
+    // update the shelf for a book based on user input and alert that a move occured
+    // updateShelf will be passed down to all other components
     updateShelf = (book, shelf) => {
        BooksAPI.update(book, shelf)
         .then((response) => {
           book.shelf = shelf;
           this.setState((state) => ({
             books: state.books.filter((x) => {
-              return (x.id !== book.id)     
+              return (x.id !== book.id)
             }).concat([book])
           }))
-        })
+        }).then(() => shelf !== 'none' ? alert(`${book.title} has been moved.`) : null)
       }
       
 
@@ -42,7 +41,10 @@ class BooksApp extends Component {
         />
       )} />
       <Route path='/search' render={() => (
-        <SearchBooks />
+        <SearchBooks
+          books={this.state.books}
+          updateShelf={this.updateShelf}
+        />
       )} />
       </div>
     )
