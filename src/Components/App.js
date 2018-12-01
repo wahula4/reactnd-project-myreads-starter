@@ -10,13 +10,13 @@ class BooksApp extends Component {
   state = {
     books: []
 }
-    // get the inital state of all the books and pass down to other components
+    // Returns a Promise which resolves to a JSON object containing a collection of book objects currently on shelves
     async componentDidMount() {
         const books = await BooksAPI.getAll()
         this.setState( { books } )
     }
 
-    // update the shelf for a book based on user input and alert that a move occured
+    // Returns a Promise which resolves to a JSON object containing the response data of the POST request
     // updateShelf will be passed down to all other components
     updateShelf = (book, shelf) => {
        BooksAPI.update(book, shelf)

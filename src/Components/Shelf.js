@@ -1,41 +1,72 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Book from './Book';
 import PropTypes from 'prop-types'
 
-class Shelf extends Component {
-
-    static propTypes = {
-        books: PropTypes.array.isRequired,
-        updateShelf: PropTypes.func.isRequired
-      };
-
-    render() {
-
-        const { books, updateShelf } = this.props
-
-        return (
+// using stateless functional component because state is not being altered (improves performance by reducing the number of renders)
+const Shelf = ({books, section, updateShelf}) => { 
+    return (
         <div className="bookshelf">
-            <h2 className="bookshelf-title">{this.props.section}</h2>
+            <h2 className="bookshelf-title">{section}</h2>
             <div className="bookshelf-books">
                 <ol className="books-grid">
-                {
+                    {
                     // if there are any books, map over them and add book details
                     books && books.map((book) => {
-                         return (
-                              <Book
-                                   book={book}
-                                   key={book.id}
-                                   updateShelf={updateShelf}
-                              />
-                         )
+                        return (
+                            <Book
+                                book={book}
+                                key={book.id}
+                                updateShelf={updateShelf}
+                            />
+                        )
                     })
-               }
-                 
+                    }
                 </ol>
             </div>
         </div>
-        )
-    }
+    )
+}
+
+Shelf.propTypes = {
+    books: PropTypes.array.isRequired,
+    section: PropTypes.string.isRequired,
+    updateShelf: PropTypes.func.isRequired
 }
 
 export default Shelf
+
+// class Shelf extends Component {
+
+//     static propTypes = {
+//         books: PropTypes.array.isRequired,
+//         updateShelf: PropTypes.func.isRequired
+//       };
+
+//     render() {
+
+//         const { books, updateShelf, section } = this.props
+
+//         return (
+//         <div className="bookshelf">
+//             <h2 className="bookshelf-title">{section}</h2>
+//             <div className="bookshelf-books">
+//                 <ol className="books-grid">
+//                 {
+//                     // if there are any books, map over them and add book details
+//                     books && books.map((book) => {
+//                          return (
+//                               <Book
+//                                    book={book}
+//                                    key={book.id}
+//                                    updateShelf={updateShelf}
+//                               />
+//                          )
+//                     })
+//                }
+                 
+//                 </ol>
+//             </div>
+//         </div>
+//         )
+//     }
+// }

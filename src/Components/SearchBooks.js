@@ -18,7 +18,7 @@ class SearchBooks extends Component {
 
     // value typed into search bar will be set as the state for query
     handleChange = async e => {
-      const query = e.target.value.trim()
+      const query = e.target.value
       this.setState( { query } )
       
       // if search is empty, then empty array so no books are displayed
@@ -28,6 +28,7 @@ class SearchBooks extends Component {
              })
            }
       else {
+            // Returns a Promise which resolves to a JSON object containing a collection of a maximum of 20 book objects
             // if a query exists, search that query and set the state of books to be equal to the books that pass the search
             const results = await BooksAPI.search(query)
             this.setState( { books: results } )
