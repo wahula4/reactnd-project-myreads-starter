@@ -29,6 +29,8 @@ class BooksApp extends Component {
           }))
         }).then(() => shelf !== 'none' ? alert(`${book.title} has been moved.`) : null)
       }
+
+    
       
 
   render() {

@@ -20,8 +20,8 @@ const Book = ({book, updateShelf}) => {
                     </select>
                     </div>
                 </div>
-                <div className="book-title">{ book.title ? book.title : "" }</div>
-                <div className="book-authors">{ book.authors ? book.authors[0] : "" }</div>
+                <div className="book-title">{ book.title ? book.title : "No Title" }</div>
+                <div className="book-authors">{ book.authors ? book.authors[0] : "No Authors" }</div>
                 </div>
             </li>
     )

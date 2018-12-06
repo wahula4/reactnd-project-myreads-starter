@@ -34,39 +34,3 @@ Shelf.propTypes = {
 }
 
 export default Shelf
-
-// class Shelf extends Component {
-
-//     static propTypes = {
-//         books: PropTypes.array.isRequired,
-//         updateShelf: PropTypes.func.isRequired
-//       };
-
-//     render() {
-
-//         const { books, updateShelf, section } = this.props
-
-//         return (
-//         <div className="bookshelf">
-//             <h2 className="bookshelf-title">{section}</h2>
-//             <div className="bookshelf-books">
-//                 <ol className="books-grid">
-//                 {
-//                     // if there are any books, map over them and add book details
-//                     books && books.map((book) => {
-//                          return (
-//                               <Book
-//                                    book={book}
-//                                    key={book.id}
-//                                    updateShelf={updateShelf}
-//                               />
-//                          )
-//                     })
-//                }
-                 
-//                 </ol>
-//             </div>
-//         </div>
-//         )
-//     }
-// }
