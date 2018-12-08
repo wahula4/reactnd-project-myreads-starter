@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import '../App.css'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import SearchBooks from './SearchBooks'
 import ListBooks from './ListBooks'
 import * as BooksAPI from '../BooksAPI'
@@ -27,15 +27,15 @@ class BooksApp extends Component {
               return (x.id !== book.id)
             }).concat([book])
           }))
-        }).then(() => shelf !== 'none' ? alert(`${book.title} has been moved.`) : null)
+        }).catch(error => {
+          console.log(error);
+        })
       }
-
-    
-      
 
   render() {
     return (
       <div className="app">
+      <Switch>
       <Route exact path='/' render={() => (
         <ListBooks 
           books={this.state.books}
@@ -48,9 +48,18 @@ class BooksApp extends Component {
           updateShelf={this.updateShelf}
         />
       )} />
+      <Route component={NoMatch} />
+      </Switch>
       </div>
     )
   }
 }
+
+// 404 Page
+const NoMatch = ({ location }) => (
+  <div>
+    <h3>No match for <code>{location.pathname}</code></h3>
+  </div>
+)
 
 export default BooksApp

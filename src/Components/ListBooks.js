@@ -1,26 +1,15 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import Shelf from './Shelf'
 import PropTypes from 'prop-types'
 
-class ListBooks extends Component {
-
-    static propTypes = {
-        books: PropTypes.array.isRequired,
-        updateShelf: PropTypes.func.isRequired
-      };
-
-    render() {
-
-        const { books, updateShelf } = this.props
-        // each shelf will render the books that have shelf values corresponding to their section
-
-        return (
-            <div className="list-books">
-                <div className="list-books-title">
-                    <h1>MyReads</h1>
-                </div>
-                <div className="list-books-content">
+const ListBooks = ({books, updateShelf}) => { 
+    return (
+        <div className="list-books">
+            <div className="list-books-title">
+                <h1>MyReads</h1>
+            </div>
+            <div className="list-books-content">
                     <div>
                         <Shelf 
                             section="Currently Reading"
@@ -41,13 +30,19 @@ class ListBooks extends Component {
                             updateShelf={updateShelf} 
                         />
                     </div>
-                </div>
-                <div className="open-search">
-                    <Link to='/search'>Add a book</Link>
-                </div>
             </div>
-        )
-    }
+            <div className="open-search">
+                <Link to='/search'>Add a book</Link>
+            </div>
+        </div>
+    )
 }
+
+ListBooks.propTypes = {
+    books: PropTypes.array.isRequired,
+    updateShelf: PropTypes.func.isRequired
+}
+
+
 
 export default ListBooks

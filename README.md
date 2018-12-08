@@ -12,3 +12,10 @@ Then type npm start in the terminal to start the app in a web browser
 
 ## Searching
 The backend API uses a fixed set of cached search results and is limited to a particular set of search terms, which can be found in SEARCH_TERMS.md. That list of terms are the only terms that will work with the backend.
+
+### References
+[Error Handling](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch)
+[404 Page](https://css-tricks.com/404-best-practices/)
+[Stateless Function Components vs Class Components](https://reactjs.org/docs/components-and-props.html)
+[React.js](https://reactjs.org/)
+[React cheatsheet](https://devhints.io/react)
