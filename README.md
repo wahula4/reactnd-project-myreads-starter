@@ -7,8 +7,12 @@ MyReads is a bookshelf React app that allows you to select and categorize books 
 ![Homepage snapshot](/src/icons/screenshot.PNG)
 
 ## Initializing App
-In your terminal type npm install to download the dependencies.(Make sure you have Node.js installed on your system)
-Then type npm start in the terminal to start the app in a web browser
+The app is hosted on Surge [here](http://feigned-story.surge.sh/)\
+
+OR
+Clone the repository.
+In your terminal type npm install to download the dependencies.(Make sure you have Node.js installed on your system).
+Then type npm start in the terminal to start the app in a web browser.
 
 ## Searching
 The backend API uses a fixed set of cached search results and is limited to a particular set of search terms, which can be found in SEARCH_TERMS.md. That list of terms are the only terms that will work with the backend.
@@ -18,4 +22,4 @@ The backend API uses a fixed set of cached search results and is limited to a pa
 [404 Page](https://css-tricks.com/404-best-practices/)\
 [Stateless Function Components vs Class Components](https://reactjs.org/docs/components-and-props.html)\
 [React.js](https://reactjs.org/)\
-[React cheatsheet](https://devhints.io/react)\
+[React cheatsheet](https://devhints.io/react)
