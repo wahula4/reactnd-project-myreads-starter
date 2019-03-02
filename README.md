@@ -7,7 +7,7 @@ MyReads is a bookshelf React app that allows you to select and categorize books 
 ![Homepage snapshot](/src/icons/screenshot.PNG)
 
 ## Initializing App
-The app is hosted on Surge [here](http://feigned-story.surge.sh/)\
+The app is hosted on Surge [here](https://gray-flesh.surge.sh/)\
 
 OR
 Clone the repository.
